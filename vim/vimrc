@@ -1,0 +1,57 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'php.vim'
+Plugin 'joonty/vdebug'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'ervandew/supertab'
+Plugin 'kien/ctrlp.vim'
+Plugin 'joonty/vim-phpqa'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
+
+call vundle#end()
+
+filetype plugin indent on
+let g:SuperTabDefaultCompletionType = ""
+set tags=~/ua/uaweb/magento/magento-php.tags
+let g:tagcommands = {
+\    "php" : {
+\        "tagfile" : "~/ua/uaweb/magento/.php.tags",
+\        "args" : "-R",
+\        "files" : "~/ua/uaweb/magento/**"
+\    }
+\}
+
+" NERDTree
+map <Leader>n :NERDTreeToggle<CR>
+" phpqa
+let g:phpqa_codesniffer_autorun = 0
+let g:phpqa_messdetector_autorun = 0
+
+map <Leader>s : source ~/.vimrc <CR>
+map <Leader>b :TagbarToggle <CR>
+map <C-f> :set noea <CR> :set ea <CR>
+map <C-i>p :set paste <CR> i
+map <C-i>n :set nopaste <CR> i
+map <Left> <C-W>h
+map <Right> <C-W>l
+map <Up> <C-W>k
+map <Down> <C-W>j
+map <F4> :set textwidth=0 <CR>
+syntax enable
+
+" IDE settings
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set hlsearch
+set laststatus=2
+set ruler
+autocmd BufWritePre *.p* :%s/\s\+$//e
+autocmd QuickFixCmdPost *grep* cwindow
