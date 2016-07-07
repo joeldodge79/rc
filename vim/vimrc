@@ -27,6 +27,7 @@ let g:tagcommands = {
 \        "files" : "~/ua/uaweb/magento/**"
 \    }
 \}
+let g:tagbar_autofocus = 1
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
