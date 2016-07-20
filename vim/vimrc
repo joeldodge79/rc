@@ -31,11 +31,34 @@ let g:tagbar_autofocus = 1
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
+
 " phpqa
 let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_messdetector_autorun = 0
 
-map <Leader>s : source ~/.vimrc <CR>
+" Vdebug
+" let g:vdebug_options["path_maps"] = {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",}
+"let g:vdebug_options = {"path_maps": {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",}}
+
+let g:vdebug_options= {
+    \    "port" : 9000,
+    \    "server" : '',
+    \    "timeout" : 20,
+    \    "on_close" : 'detach',
+    \    "break_on_open" : 1,
+    \    "ide_key" : '',
+    \    "path_maps" : {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",},
+    \    "debug_window_level" : 0,
+    \    "debug_file_level" : 0,
+    \    "debug_file" : "",
+    \    "watch_window_style" : 'expanded',
+    \    "marker_default" : '⬦',
+    \    "marker_closed_tree" : '▸',
+    \    "marker_open_tree" : '▾'
+    \}
+
+map <Leader>s : vsp %:p:h <CR>
+map <Leader>v : source ~/.vimrc <CR>
 map <Leader>b :TagbarToggle <CR>
 map <C-f> :set noea <CR> :set ea <CR>
 map <C-i>p :set paste <CR> i

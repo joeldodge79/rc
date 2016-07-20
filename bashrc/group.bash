@@ -5,7 +5,7 @@ export LANG="$LC_ALL"
 export PS1="$Y\t$N $W$N$PROMPT_COLOR$N:$C\w$N\n"'$CURSOR_PROMPT '
 
 alias cdu='cd ~/ua/uaweb/'
-alias cdm='cd ~/ua/uaweb/magento/htdocs/app/code/local/Uaudio'
+alias cdm='cd ~/ua/uaweb/magento/htdocs/'
 
 alias vig='vi -O "$(git show --format='' --name-only)"'
 
