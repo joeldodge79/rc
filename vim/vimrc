@@ -57,6 +57,12 @@ let g:vdebug_options= {
     \    "marker_open_tree" : '▾'
     \}
 
+let g:ctrlp_custom_ignore = {'dir':'magento\/htdocs\/lib\/vendor$|\.git$|\.hg$|\.svn$'}
+
+let g:ctrlp_max_files = 0  " unlimited
+let g:ctrlp_max_depth = 100
+let g:ctrlp_follow_symlinks = 1
+
 map <Leader>s : vsp %:p:h <CR>
 map <Leader>v : source ~/.vimrc <CR>
 map <Leader>b :TagbarToggle <CR>
