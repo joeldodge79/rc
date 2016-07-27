@@ -54,7 +54,8 @@ let g:vdebug_options= {
     \    "watch_window_style" : 'expanded',
     \    "marker_default" : '⬦',
     \    "marker_closed_tree" : '▸',
-    \    "marker_open_tree" : '▾'
+    \    "marker_open_tree" : '▾',
+    \    "continuous_mode" : 1
     \}
 
 let g:ctrlp_custom_ignore = {'dir':'magento\/htdocs\/lib\/vendor$|\.git$|\.hg$|\.svn$'}

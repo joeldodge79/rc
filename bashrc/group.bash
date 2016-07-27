@@ -7,7 +7,7 @@ export PS1="$Y\t$N $W$N$PROMPT_COLOR$N:$C\w$N\n"'$CURSOR_PROMPT '
 alias cdu='cd ~/ua/uaweb/'
 alias cdm='cd ~/ua/uaweb/magento/htdocs/'
 
-alias vig='vi -O $(FILES=''; for f in `git show --format= --name-only`; do FILES="$FILES ../../$f"; done; echo $FILES)'
+alias vig='vi -O $(FILES=''; for f in `git show --format= --name-only`; do FILES="$FILES /Users/jdodge/ua/uaweb/$f"; done; echo $FILES)'
 
 # AWS aliases
 alias lsec2='aws ec2 describe-instances --output text --query '"'"'Reservations[*].Instances[*].[Tags[?Key==`Name`].Value | [0],State.Name,PrivateIpAddress,InstanceId,InstanceType]'"'"' | sort'
