@@ -11,9 +11,10 @@ Plugin 'joonty/vdebug'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
-Plugin 'joonty/vim-phpqa'
+"Plugin 'joonty/vim-phpqa'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 
@@ -28,6 +29,18 @@ let g:tagcommands = {
 \    }
 \}
 let g:tagbar_autofocus = 1
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_phpcs_quiet_messages = {
+    \ "type": "style",
+    \ "regex": ['Short PHP opening tag used with echo'] }
 
 " NERDTree
 map <Leader>n :NERDTreeToggle<CR>
@@ -45,7 +58,7 @@ let g:vdebug_options= {
     \    "server" : '',
     \    "timeout" : 20,
     \    "on_close" : 'detach',
-    \    "break_on_open" : 1,
+    \    "break_on_open" : 0,
     \    "ide_key" : '',
     \    "path_maps" : {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",},
     \    "debug_window_level" : 0,
@@ -66,6 +79,7 @@ let g:ctrlp_follow_symlinks = 1
 
 map <Leader>s : vsp %:p:h <CR>
 map <Leader>v : source ~/.vimrc <CR>
+map <Leader>r : res +44 <CR>
 map <Leader>b :TagbarToggle <CR>
 map <C-f> :set noea <CR> :set ea <CR>
 map <C-i>p :set paste <CR> i
