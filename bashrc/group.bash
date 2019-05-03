@@ -1,4 +1,5 @@
 source ~/.tmux-git/tmux-git.sh
+set -o vi -o noclobber
 
 export LC_ALL=en_US.utf-8 
 export LANG="$LC_ALL"
@@ -6,9 +7,9 @@ export PS1="$Y\t$N $W$N$PROMPT_COLOR$N:$C\w$N\n"'$CURSOR_PROMPT '
 export UAWEB="/Users/jdodge/ua/uaweb"
 export UAMAG="magento/htdocs"
 export UAUA="app/code/local/Uaudio"
+export alfred_version="3"
+export PATH="~/Library/Python/3.7/bin/:/usr/local/sbin:/usr/local/opt/python/libexec/bin:$PATH"
 
-alias cdu="cd $UAWEB"
-alias cdm="cd $UAWEB/$UAMAG"
 alias viua="vi $UAWEB/$UAMAG/$UAUA"
 
 #alias vig="vi -O $(git show --format= --name-only)"

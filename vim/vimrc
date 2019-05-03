@@ -1,3 +1,8 @@
+"avoid DeprecationWarning: the imp module is deprecated in favour of importlib
+if has('python3')
+  silent! python3 1
+endif
+
 set nocompatible
 filetype off
 
@@ -50,17 +55,14 @@ let g:phpqa_codesniffer_autorun = 0
 let g:phpqa_messdetector_autorun = 0
 
 " Vdebug
-" let g:vdebug_options["path_maps"] = {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",}
-"let g:vdebug_options = {"path_maps": {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",}}
-
 let g:vdebug_options= {
     \    "port" : 9000,
     \    "server" : '',
-    \    "timeout" : 20,
+    \    "timeout" : 60,
     \    "on_close" : 'detach',
     \    "break_on_open" : 0,
     \    "ide_key" : '',
-    \    "path_maps" : {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento",},
+    \    "path_maps" : {"/opt/ua/www": "/Users/jdodge/ua/uaweb/magento","/opt/ua/mfg": "/Users/jdodge/ua/uaweb/mfg","/opt/ua/auth": "/Users/jdodge/ua/uaweb/auth",},
     \    "debug_window_level" : 0,
     \    "debug_file_level" : 0,
     \    "debug_file" : "",
@@ -73,14 +75,24 @@ let g:vdebug_options= {
 
 let g:ctrlp_custom_ignore = {'dir':'magento\/htdocs\/lib\/vendor$|\.git$|\.hg$|\.svn$'}
 
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
 let g:ctrlp_max_files = 0  " unlimited
 let g:ctrlp_max_depth = 100
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.git|\.hg|\.svn|locale|vendor|etc|tests|downloader)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+    \ }
 
 map <Leader>s : vsp %:p:h <CR>
-map <Leader>v : source ~/.vimrc <CR>
+map <Leader>v : vsp ~/ua/uaweb/magento/htdocs/app/code/local/Uaudio/ <CR>
 map <Leader>r : res +44 <CR>
 map <Leader>b :TagbarToggle <CR>
+map <Leader>j :%!python -m json.tool <CR>
 map <C-f> :set noea <CR> :set ea <CR>
 map <C-i>p :set paste <CR> i
 map <C-i>n :set nopaste <CR> i
@@ -90,6 +102,7 @@ map <Up> <C-W>k
 map <Down> <C-W>j
 map <F4> :set textwidth=0 <CR>
 syntax enable
+vnoremap // y/<C-R>"<CR>
 
 " IDE settings
 set softtabstop=4
@@ -99,4 +112,6 @@ set hlsearch
 set laststatus=2
 set ruler
 autocmd BufWritePre *.p* :%s/\s\+$//e
-autocmd QuickFixCmdPost *grep* cwindow
+"autocmd QuickFixCmdPost *grep* cwindow
+set grepprg=git\ grep\ -n
+nnoremap <leader>g :silent grep! <cword><CR>
